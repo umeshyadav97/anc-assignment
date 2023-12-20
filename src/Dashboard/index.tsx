@@ -62,7 +62,6 @@ const Dashboard: React.FC = () => {
 
   return (
     <div>
-      {/* <DashboardCard /> */}
       <DashboardList
         sports={sports}
         handleAddPlayer={handleAddPlayer}

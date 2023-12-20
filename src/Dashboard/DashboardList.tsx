@@ -27,12 +27,9 @@ const DashboardList: React.FC<DashboardListProps> = ({
   handleAddPlayer,
 }) => {
   const styles = useStyles();
-  const [isEdit, setIsEdit] = useState(false);
   const [editedName, setEditedName] = useState("");
   const [editedAge, setEditedAge] = useState("");
-  const [editedPlayerIndex, setEditedPlayerIndex] = useState<number | null>(
-    null
-  );
+
   const [editedPlayer, setEditedPlayer] = useState({
     gameIndex: -1,
     teamIndex: -1,
@@ -71,13 +68,11 @@ const DashboardList: React.FC<DashboardListProps> = ({
       });
       setEditedName("");
       setEditedAge("");
-      setIsEdit(false);
     }
   };
 
   const handleAddPlayerClick = (gameIndex: number, teamIndex: number) => {
     handleAddPlayer(gameIndex, teamIndex, "", "");
-    setIsEdit(true);
   };
 
   const handleClick = (
@@ -86,7 +81,6 @@ const DashboardList: React.FC<DashboardListProps> = ({
     playerIndex: number,
     player: any
   ) => {
-    setEditedPlayerIndex(playerIndex);
     setEditedPlayer({
       gameIndex,
       teamIndex,
@@ -94,7 +88,6 @@ const DashboardList: React.FC<DashboardListProps> = ({
       name: player.name,
       age: player.age,
     });
-    setIsEdit(true);
   };
 
   return (

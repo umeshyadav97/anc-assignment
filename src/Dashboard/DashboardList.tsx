@@ -27,6 +27,7 @@ const DashboardList: React.FC<DashboardListProps> = ({
   handleAddPlayer,
 }) => {
   const styles = useStyles();
+  // State for edited player information
   const [editedName, setEditedName] = useState("");
   const [editedAge, setEditedAge] = useState("");
 
@@ -38,14 +39,16 @@ const DashboardList: React.FC<DashboardListProps> = ({
     age: "",
   });
 
+  // Handle name change in the InputField
   const handleNameChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setEditedName(event.target.value);
   };
-
+  // Handle age change in the InputField
   const handleAgeChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setEditedAge(event.target.value);
   };
 
+  // Handle saving the edited player information
   const handleSavePlayer = () => {
     if (
       editedPlayer.gameIndex !== -1 &&
@@ -71,10 +74,11 @@ const DashboardList: React.FC<DashboardListProps> = ({
     }
   };
 
+  // Handle adding a new player when the "Add Player" button is clicked
   const handleAddPlayerClick = (gameIndex: number, teamIndex: number) => {
     handleAddPlayer(gameIndex, teamIndex, "", "");
   };
-
+  // Handle clicking on a player to edit their information
   const handleClick = (
     gameIndex: number,
     teamIndex: number,

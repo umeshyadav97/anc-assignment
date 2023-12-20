@@ -21,6 +21,7 @@ export interface Sport {
 }
 
 const Dashboard: React.FC = () => {
+  // State to store sports data
   const [sports, setSports] = useState<Sport[]>([]);
 
   useEffect(() => {
@@ -30,6 +31,8 @@ const Dashboard: React.FC = () => {
       .then((response) => setSports(response.data))
       .catch((error) => console.error("Error fetching data:", error));
   }, []);
+
+  // Handler function to add a new player
   const handleAddPlayer = (
     sportIndex: number,
     teamIndex: number,
@@ -45,7 +48,7 @@ const Dashboard: React.FC = () => {
     updatedSports[sportIndex].teams[teamIndex].players.unshift(newPlayer);
     setSports(updatedSports);
   };
-
+  // Handler function to edit a player's information
   const handleEditPlayer = (
     gameIndex: number,
     teamIndex: number,
@@ -62,6 +65,7 @@ const Dashboard: React.FC = () => {
 
   return (
     <div>
+      {/* Render the DashboardList component with sports data and handler functions */}
       <DashboardList
         sports={sports}
         handleAddPlayer={handleAddPlayer}
